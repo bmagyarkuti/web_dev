@@ -6,5 +6,14 @@ image.src = './bird.png';
 
 const canvas = document.querySelector('canvas');
 
+
 const bird = new Bird();
-image.onload = () => new Renderer(canvas, image, bird).render();
+const renderer = new Renderer(canvas, image, bird)
+
+const loop = () => {
+  renderer.render();
+  bird.move();
+  window.requestAnimationFrame(loop);
+}
+
+loop();
